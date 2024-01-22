@@ -9,11 +9,17 @@ app.use(express.static(path.resolve('./public')));
 const wss = new WebSocketServer({ port: 3000 });
 
 wss.on('connection', (ws) => {
-  console.log('connected');
+  console.log('CONNECTED TO WEBSOCKET');
   ws.on('message', (message) => {
     const msg = JSON.parse(message);
     wss.clients.forEach((client) => {
-      client.send(JSON.stringify(msg));
+      if (client.readyState === WebSocket.OPEN) {
+        if (client === ws) {
+          client.send(JSON.stringify({ ...msg, currentUser: true }));
+        } else {
+          client.send(JSON.stringify({ ...msg, currentUser: false }));
+        }
+      }
     });
   });
 });
