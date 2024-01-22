@@ -10,6 +10,23 @@ body {
 }
 
 .chat-messages {
-  display: flex;
-  flex-direction: column;
+  list-style-type: none;
+  padding-left: 0;
+  display: grid !important;
+  grid-auto-rows: min-content !important;
+}
+
+.chat-message {
+  display: grid;
+  grid-template-rows: 16px min-content;
+  width: fit-content;
+  height: fit-content;
+}
+
+.chat-message .chat-message-username {
+  font-weight: bold;
+}
+
+.current-user {
+  justify-self: right;
 }
