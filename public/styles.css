@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  background-color: rgba(245, 245, 245, 1);
 }
 
 .chat {
@@ -9,11 +10,22 @@ body {
   grid-template-rows: 1fr 50px;
 }
 
+.chat-form {
+  display: grid;
+  grid-template-columns: 1fr 50px;
+}
+
+.chat-input:focus {
+  outline: none;
+}
+
 .chat-messages {
   list-style-type: none;
   padding-left: 0;
   display: grid !important;
   grid-auto-rows: min-content !important;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
 .chat-message {
@@ -23,8 +35,21 @@ body {
   height: fit-content;
 }
 
+.chat-message .chat-message-top {
+  display: grid;
+  grid-template-columns: repeat(2, min-content);
+  gap: 10px;
+}
+
 .chat-message .chat-message-username {
   font-weight: bold;
+}
+
+.chat-message .chat-message-text {
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  padding: 7px 14px;
+  border-radius: 8px 8px 8px 8px;
 }
 
 .current-user {
